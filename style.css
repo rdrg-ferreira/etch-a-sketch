@@ -24,15 +24,20 @@ body {
     flex-wrap: wrap;
     border: 1px solid black;
     flex-basis: 50vh;
+    width: 50vw;
 }
 
 .grid-square {
-    border: 1px solid black;
+    border: 1px solid gray;
     flex: 1 1 calc(100% / 16); /* default value for 16x16 grid */
     aspect-ratio: 1;
 }
 
-.square-hover {
+.border-off {
+    border: none;
+}
+
+.fill-square {
     background-color: black;
 }
 
