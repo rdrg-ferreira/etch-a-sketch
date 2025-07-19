@@ -6,6 +6,13 @@ function createGrid() {
         square.classList.add("grid-square");
         container.appendChild(square);
     }
+
+    // add hover effect
+    container.addEventListener("mouseover", (e) => {
+        if (e.target.classList.contains("grid-square")) {
+            e.target.classList.add("square-hover");
+        }
+    });
 }
 
 createGrid();
