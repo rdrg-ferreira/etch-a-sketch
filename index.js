@@ -65,10 +65,12 @@ function toggleGrid() {
 function handleSketchMode() {
     currentMode = "mouseover";
 
-    // remove event listerners from click mode
-    container.removeEventListener("mousedown", addHoverEffect);
-    container.removeEventListener("mousedown", handleFillSquare);
-    container.removeEventListener("mouseup", removeHoverEffect);
+    // we dont remove the event listeners from click mode
+    // since some of their handlers are anonymous functions
+    // and because in sketch mode it doesn't really matter
+    // if you can also click and drag to fill a square,
+    // since it would have been filled either way.
+    // its not the best approach, but it will stay like this for now.
 
     // add event listerners for sketch mode
     addHoverEffect();
@@ -86,8 +88,12 @@ function handleCLickMode() {
     container.addEventListener("dragstart", (e) => e.preventDefault());
 
     // add event listerners for click mode
-    container.addEventListener(currentMode, addHoverEffect);
-    container.addEventListener(currentMode, handleFillSquare); // this is to fill the square where we start the click and drag motion
+    container.addEventListener(currentMode, (e) => {
+        if (e.button === 0) addHoverEffect();
+    });
+    container.addEventListener(currentMode, (e) => {
+        if (e.button === 0) handleFillSquare(e);
+    }); // this is to fill the square where we start the click and drag motion
     container.addEventListener("mouseup", removeHoverEffect);
 
     toggleModeButton.textContent = "Toggle mode: Click";
