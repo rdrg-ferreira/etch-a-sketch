@@ -7,7 +7,15 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+    <button class="change-grid" onclick="changeGridSize()">Change the size of the grid</button>
     <div class="container"></div>
+
     <script src="./index.js"></script>
+
+    <script>
+        const size = 16;
+        createGrid(size);
+        addHoverEffect();
+    </script>
 </body>
 </html>
