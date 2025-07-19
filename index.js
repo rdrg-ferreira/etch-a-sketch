@@ -66,11 +66,12 @@ function handleSketchMode() {
     currentMode = "mouseover";
 
     // we dont remove the event listeners from click mode
-    // since some of their handlers are anonymous functions
-    // and because in sketch mode it doesn't really matter
+    // that have their handlers as anonymous functions, 
+    // since in sketch mode it doesn't really matter
     // if you can also click and drag to fill a square,
     // since it would have been filled either way.
     // its not the best approach, but it will stay like this for now.
+    container.removeEventListener("mouseup", removeHoverEffect);
 
     // add event listerners for sketch mode
     addHoverEffect();
