@@ -2,9 +2,12 @@ const container = document.querySelector(".container");
 const changeGridSizeButton = document.querySelector(".change-grid");
 const toggleGridButton = document.querySelector(".toggle-grid");
 const toggleModeButton = document.querySelector(".toggle-mode");
+const buttonContainer = document.querySelector(".button-container");
+const root = document.querySelector(":root");
 
 let isGridVisible = true;
 let currentMode = "mouseover";
+let currentColor = "black";
 
 function createGrid(size) {
     // create square divs
@@ -18,7 +21,7 @@ function createGrid(size) {
 
 function handleFillSquare(e) {
     if (e.target.classList.contains("grid-square")) {
-        e.target.classList.add("fill-square");
+        e.target.style.backgroundColor = currentColor;
     }
 }
 
@@ -106,4 +109,44 @@ function toggleMode() {
     } else {
         handleSketchMode();
     }
+}
+
+function changeColor(color) {
+    root.style.setProperty("--current-color", color);
+    currentColor = color;
+}
+
+function clearGrid() {
+    const squares = container.querySelectorAll(".grid-square");
+    squares.forEach((item) => item.style.backgroundColor = "white");
+}
+
+function initSidebar() {
+    // utility buttons
+    let list = document.querySelectorAll(".utility");
+
+    list.forEach((item) => {
+        item.addEventListener("click", (e) => {
+            if (e.target.id === "pencil") changeColor("black");
+            else if (e.target.id === "eraser") changeColor("white");
+            else if (e.target.id === "clear") clearGrid();
+        })
+    });
+
+    // color buttons
+    list = document.querySelectorAll(".color");
+
+    list.forEach((item) => {
+        item.style.backgroundColor = item.id;
+
+        item.addEventListener("click", (e) => {
+            changeColor(e.target.id);
+        });
+    });
+}
+
+function init() {
+    createGrid(16);
+    addHoverEffect();
+    initSidebar();
 }

@@ -16,21 +16,36 @@
             </a>
         </div>
     </div>
-
-    <div class="button-container">
-        <button class="change-grid" onclick="changeGridSize()">Change the size of the grid</button>
-        <button class="toggle-grid" onclick="toggleGrid()">Toggle grid: ON</button>
-        <button class="toggle-mode" onclick="toggleMode()">Toggle mode: Sketch</button>
+    <div class="main">
+        <div class="button-container">
+            <button class="options change-grid" onclick="changeGridSize()">Change the size of the grid</button>
+            <button class="options toggle-grid" onclick="toggleGrid()">Toggle grid: ON</button>
+            <button class="options toggle-mode" onclick="toggleMode()">Toggle mode: Sketch</button>
+        </div>
+        <div class="draw-area">
+            <div class="sidebar">
+                <ul>
+                    <li><button class="utility materials-icon" id="pencil">ink_pen</button></li>
+                    <li><button class="utility materials-icon" id="eraser">ink_eraser</button></li>
+                    <li><button class="utility materials-icon" id="clear">delete</button></li>
+                    <li><div class="materials-icon" id="line">horizontal_rule</div></li>
+                    <li><button class="color materials-icon" id="red">palette</button></li>
+                    <li><button class="color materials-icon" id="blue">palette</button></li>
+                    <li><button class="color materials-icon" id="yellow">palette</button></li>
+                    <li><button class="color materials-icon" id="green">palette</button></li>
+                    <li><button class="color materials-icon" id="gray">palette</button></li>
+                    <li><button class="color materials-icon" id="brown">palette</button></li>
+                    <li><button class="color materials-icon" id="purple">palette</button></li>
+                </ul>
+            </div>
+            <div class="container"></div>
+        </div>
     </div>
     
-    <div class="container"></div>
-
     <script src="./index.js"></script>
 
     <script>
-        const size = 16;
-        createGrid(size);
-        addHoverEffect();
+        init();
     </script>
 </body>
 </html>
