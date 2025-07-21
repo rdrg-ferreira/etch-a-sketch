@@ -40,7 +40,7 @@ function changeGridSize() {
 
     if (newSize === null) return;
 
-    while (isNaN(newSize) || parseInt(newSize) < 0 || parseInt(newSize) > 100 ) {
+    while (isNaN(newSize) || newSize == "" || parseInt(newSize) < 0 || parseInt(newSize) > 100 ) {
         alert("That value is invalid for the grid size. Try again.");
         newSize = prompt("Enter the new number of squares per side for the new grid:");
     }
