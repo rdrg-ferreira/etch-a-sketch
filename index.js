@@ -14,7 +14,7 @@ function createGrid(size) {
     for (let i = 0; i < (size ** 2); i++) {
         const square = document.createElement("div");
         square.classList.add("grid-square");
-        if (isGridVisible === false) square.classList.add("border-off");
+        if (isGridVisible) square.classList.add("border-off");
         square.style.flex = `1 1 calc(100% / ${size})`;
         container.appendChild(square);
     }
